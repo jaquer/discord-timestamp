@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>human date to discord timestamp</title>
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_black.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script defer src="timestamp.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>human time<h1>
+      <p>to discord timestamp</p>
+    </header>
+    <main>
+      <section>
+        <form>
+          <fieldset>
+            <legend>input</legend>
+            <input id="humanTime" type="text">
+          </fieldset>
+
+          <fieldset id="outputFields">
+            <legend>output</legend>
+            <label for="formattedTime">formatted</label>
+            <input id="formattedTime" type="text" readonly>
+
+            <label for"discordFull">full</label>
+            <input id="discordFull" type="text" readonly>
+
+            <label for"discordRealtive">relative</label>
+            <input id="discordRelative" type="text" readonly>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
