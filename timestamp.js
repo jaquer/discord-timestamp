@@ -61,22 +61,24 @@ function parseRelative(humanTime) {
   parseTime(humanTime);
 }
 
+const HOUR = 1;
+const MINUTES = 2;
+const MERIDIAN = 3;
 function parseTime(humanTime) {
 
-  let matchTime = humanTime.match(/at (\d\d?)/);
+  let matchTime = humanTime.match(/at (\d\d?):?(\d\d)?\s?(p)?/);
   if (matchTime) {
-    matchTime.push("00");
-    matchTimeMinutes = humanTime.match(/at (\d\d?):?(\d\d)/);
 
-    if (matchTimeMinutes)
-      matchTime = matchTimeMinutes;
+    if (matchTime[MINUTES] == undefined)
+      matchTime[MINUTES] = "00";
 
-    let matchPastMeridian = humanTime.match(/at (\d\d?):?(\d\d)?\s?(p)/);
-    if (matchPastMeridian)
-      matchTime[1] = 12 + parseInt(matchTime[1]);
+    dayjsOutput = dayjsOutput
+                    .hour(matchTime[HOUR])
+                    .minute(matchTime[MINUTES])
+                    .second(0);
 
-    dayjsOutput = dayjsOutput.hour(matchTime[1]);
-    dayjsOutput = dayjsOutput.minute(matchTime[2]);
-    dayjsOutput = dayjsOutput.second(0);
+    if (matchTime[MERIDIAN] != undefined) // pm
+      dayjsOutput = dayjsOutput.add(12, 'hours');
+
   }
 }
