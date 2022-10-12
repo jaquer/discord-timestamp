@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="513.34pt" height="513.34pt" version="1.1" xmlns="http://www.w3.org/2000/svg">
-<svg width="513.34pt" height="513.34pt" version="1.1" viewBox="0 0 513.34003 513.34003" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg">
+<svg width="512" height="512" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <path d="m256.67 0c-141.75 0-256.67 114.92-256.67 256.67s114.91 256.67 256.67 256.67c141.75 0 256.67-114.91 256.67-256.67 0-141.75-114.91-256.67-256.67-256.67zm0 466.67c-115.98 0-210-94.016-210-210 0-115.98 94.023-210 210-210s210 94.023 210 210c0 115.98-94.023 210-210 210zm86.496-156.5c9.1133 9.1133 9.1133 23.887 0 33-4.5508 4.5469-10.527 6.8281-16.496 6.8281-5.9688 4e-3 -11.941-2.2734-16.496-6.832l-70-70c-4.375-4.3711-6.8359-10.305-6.8359-16.5v-140c0-12.887 10.449-23.332 23.332-23.332 12.887 0 23.332 10.449 23.332 23.332v130.34z"/>
-</svg>
-<style>@media (prefers-color-scheme: light) { :root { filter: none; } }
-@media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }</style>
+<style>
+@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
+</style>
 </svg>
