@@ -1,4 +1,3 @@
-var dayjsToday = dayjs();
 var dayjsOutput = dayjs();
 
 humanTime.addEventListener("keyup", humanTimeParse);
@@ -37,13 +36,13 @@ function parseAbsolute(humanTime) {
   let humanMonth = humanTime.substring(0, 3);
   humanMonth = MONTHS.indexOf(humanMonth);
 
-  dayjsOutput = dayjsToday.month(humanMonth);
+  dayjsOutput = dayjs().month(humanMonth);
 
   let matchDate = humanTime.match(/(\d\d?)/);
   if (matchDate)
     dayjsOutput = dayjsOutput.date(matchDate[1]);
 
-  if (dayjsOutput.isBefore(dayjsToday, "day"))
+  if (dayjsOutput.isBefore(dayjs(), "day"))
     dayjsOutput = dayjsOutput.add(1, 'year');
 
   parseTime(humanTime);
@@ -53,10 +52,10 @@ function parseRelative(humanTime) {
   let humanWeekday = humanTime.substring(0, 2);
   humanWeekday = WEEKDAYS.indexOf(humanWeekday);
 
-  if (dayjsToday.day() >= humanWeekday)
+  if (dayjs().day() >= humanWeekday)
     humanWeekday += 7;
 
-  dayjsOutput = dayjsToday.day(humanWeekday);
+  dayjsOutput = dayjs().day(humanWeekday);
 
   parseTime(humanTime);
 }
