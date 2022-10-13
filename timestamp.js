@@ -13,10 +13,26 @@ outputFields.addEventListener("click", (e) => {
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 const WEEKDAYS = ["su", "mo", "tu", "we", "th", "fr", "sa"];
 const OUTPUTS = [
-  { suffix: 'F', id: 'discordFull' },
-  { suffix: 't', id: 'discordTime' },
-  { suffix: 'R', id: 'discordRelative' },
+  { suffix: 'F', id: 'discordFull', text: "discord full" },
+  { suffix: 't', id: 'discordTime', text: "discord time" },
+  { suffix: 'R', id: 'discordRelative', text: "discord relative" },
 ];
+
+OUTPUTS.forEach(element => {
+  let labelElement = document.createElement('label');
+  let inputElement = document.createElement('input');
+
+  labelElement.htmlFor = element.id;
+  labelElement.innerText = element.text;
+
+  inputElement.id = element.id;
+  inputElement.type = 'text';
+  inputElement.readOnly = true;
+
+  outputFields.appendChild(labelElement);
+  outputFields.appendChild(inputElement);
+});
+
 function humanTimeParse() {
   let humanTimeValue = humanTime.value;
 
