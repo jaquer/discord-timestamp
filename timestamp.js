@@ -12,6 +12,11 @@ outputFields.addEventListener("click", (e) => {
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 const WEEKDAYS = ["su", "mo", "tu", "we", "th", "fr", "sa"];
+const OUTPUTS = [
+  { suffix: 'F', id: 'discordFull' },
+  { suffix: 't', id: 'discordTime' },
+  { suffix: 'R', id: 'discordRelative' },
+];
 function humanTimeParse() {
   let humanTimeValue = humanTime.value;
 
@@ -24,8 +29,11 @@ function humanTimeParse() {
     parseRelative(humanTimeValue);
 
   formattedTime.value = dayjsOutput.format("dddd, MMMM D, YYYY h:mm A");
-  discordFull.value = "<t:" + dayjsOutput.unix() + ":F>";
-  discordRelative.value = "<t:" + dayjsOutput.unix() + ":R>";
+
+  let unixTimestamp = dayjsOutput.unix();
+  OUTPUTS.forEach(element => {
+    document.getElementById(element.id).value = `<t:${unixTimestamp}:${element.suffix}>`;
+  });
 }
 
 function startsWithAny(strString, aryArray) {
