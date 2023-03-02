@@ -84,23 +84,20 @@ function parseRelative(humanTime) {
   parseTime(humanTime);
 }
 
-const HOUR = 1;
-const MINUTES = 2;
-const MERIDIAN = 3;
 function parseTime(humanTime) {
 
-  let matchTime = humanTime.match(/at (\d\d?):?(\d\d)?\s?(p)?/);
+  let matchTime = humanTime.match(/at (?<hour>\d\d?):?(?<minutes>\d\d)?\s?(?<meridian>p)?/);
   if (matchTime) {
 
-    if (matchTime[MINUTES] == undefined)
-      matchTime[MINUTES] = "00";
+    if (matchTime.groups.minutes == undefined)
+      matchTime.groups.minutes = "00";
 
     dayjsOutput = dayjsOutput
-                    .hour(matchTime[HOUR])
-                    .minute(matchTime[MINUTES])
+                    .hour(matchTime.groups.hour)
+                    .minute(matchTime.groups.minutes)
                     .second(0);
 
-    if (matchTime[MERIDIAN] != undefined) // pm
+    if (matchTime.groups.meridian != undefined) // pm
       dayjsOutput = dayjsOutput.add(12, 'hours');
 
   }
