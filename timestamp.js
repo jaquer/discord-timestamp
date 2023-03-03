@@ -89,6 +89,9 @@ function parseTime(humanTime) {
   let matchTime = humanTime.match(/at (?<hour>\d\d?):?(?<minutes>\d\d)?\s?(?<meridian>p)?/);
   if (matchTime) {
 
+    if (matchTime.groups.hour == "12")
+      matchTime.groups.hour = "00";
+
     if (matchTime.groups.minutes == undefined)
       matchTime.groups.minutes = "00";
 
@@ -97,8 +100,9 @@ function parseTime(humanTime) {
                     .minute(matchTime.groups.minutes)
                     .second(0);
 
-    if (matchTime.groups.meridian != undefined) // pm
+    if (matchTime.groups.meridian == "p")
       dayjsOutput = dayjsOutput.add(12, 'hours');
 
   }
+
 }
