@@ -43,6 +43,8 @@ function humanTimeParse() {
     parseAbsolute(humanTimeValue);
   else if (startsWithAny(humanTimeValue, WEEKDAYS))
     parseRelative(humanTimeValue);
+  else
+    parseWithAI(humanTimeValue);
 
   formattedTime.value = dayjsOutput.format("dddd, MMMM D, YYYY h:mm A");
 
@@ -54,6 +56,18 @@ function humanTimeParse() {
 
 function startsWithAny(strString, aryArray) {
   return aryArray.some(strItem => strString.startsWith(strItem))
+}
+
+function parseWithAI(humanTime) {
+  // "AI is just a bunch of nested 'if' statements." - Albert Einstein
+  if (humanTime.startsWith("tom")) // "tomorrow"
+    dayjsOutput = dayjs().add(1, "day");
+  else if (humanTime.startsWith("tod") || humanTime.startsWith("at")) // "today" or just "at"
+    dayjsOutput = dayjs();
+  else
+    return;
+
+  parseTime(humanTime);
 }
 
 function parseAbsolute(humanTime) {
