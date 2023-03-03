@@ -39,6 +39,13 @@ function humanTimeParse() {
   humanTimeValue = humanTimeValue.toLowerCase();
   humanTimeValue = humanTimeValue.replace(/\s+/mg, ' ');
 
+  if (humanTimeValue == "") {
+    document.querySelectorAll('input').forEach(element => {
+      element.value = "";
+    });
+    return;
+  }
+
   if (startsWithAny(humanTimeValue, MONTHS))
     parseAbsolute(humanTimeValue);
   else if (startsWithAny(humanTimeValue, WEEKDAYS))
