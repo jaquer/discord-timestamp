@@ -1,5 +1,13 @@
 var dayjsOutput = dayjs();
 
+let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+function updateCurrent() {
+  let dateTime = dayjs().format("dddd, MMMM D, YYYY h:mm:ss A ZZ");
+  current.innerText = dateTime + " (" + timeZone + ")";
+}
+updateCurrent();
+setInterval(updateCurrent, 1000);
+
 humanTime.addEventListener("keyup", humanTimeParse);
 humanTime.addEventListener("change", humanTimeParse);
 
