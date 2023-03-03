@@ -9,3 +9,7 @@
     color: #000;
   }
 }
+
+fieldset, input[type=text] {
+  border-radius: 0.5rem;
+}
